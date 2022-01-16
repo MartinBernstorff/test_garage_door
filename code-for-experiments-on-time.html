@@ -26,7 +26,7 @@ var ctx = canvas. …">
 <meta name=twitter:title content>
 <meta name=twitter:description content="Code for experiments on time <!DOCTYPE html> <html> <body> <canvas id=&#34;canvas&#34; width=&#34;400&#34; height=&#34;400&#34; style=&#34;background-color:#333&#34;> </canvas> <script> var canvas = document.getElementById(&#34;canvas&#34;); var ctx = canvas.getContext(&#34;2d&#34;); var radius = canvas.height / 2; ctx.translate(radius, radius); radius = radius * 0.90 setInterval(drawClock, 1000); function drawClock() { drawFace(ctx, radius); drawNumbers(ctx, radius); drawTime(ctx, radius); } function drawFace(ctx, radius) { var grad; ctx.beginPath(); ctx.arc(0, 0, radius, 0, 2*Math.PI); ctx.fillStyle = 'white'; ctx.fill(); grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05); grad.addColorStop(0, '#333'); grad.">
 <title>Code for experiments on time - My New Hugo Site</title>
-<link rel=stylesheet href=https://martbern.github.io/test_garage_door/css/main.min.b87750d092855b50f95ecdbb7001770e3f800ae4dbc71f0e0de699df9321e75d.css>
+<link rel=stylesheet href=https://martbern.github.io/test_garage_door/css/main.min.33389b11303e8fae9369acbd75cced8bf796d575b1120d23baabdf9ab8d6b6d4.css>
 <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js></script>
 <script src=https://martbern.github.io/test_garage_door/js/main.min.f64522e8eae3046c0982972c612443849ea16544a60448073f6eb7f75f8c622d.js integrity="sha256-9kUi6OrjBGwJgpcsYSRDhJ6hZUSmBEgHP26391+MYi0="></script>
 </head>
@@ -44,8 +44,6 @@ var ctx = canvas. …">
 <style>#toolbar{position:fixed;top:0;right:0;width:60px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;transition:1s;opacity:.5;padding:18px 0}#toolbar:hover{opacity:1}#close-nav-icon{display:none}</style>
 <aside id=toolbar>
 <span style=cursor:pointer id=open-nav-icon onclick=handleNavVisibility()><svg width="18" height="18" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle fill="none" stroke="var(--text-base-color)" stroke-width="1.1" cx="9" cy="9" r="7"/><path fill="none" stroke="var(--text-base-color)" stroke-width="1.1" d="M14 14l4 4-4-4z"/></svg>
-</span>
-<span onclick=imageMode() style=cursor:pointer;margin-top:16px><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="16.1" cy="6.1" r="1.1"/><rect fill="none" stroke="var(--text-base-color" x=".5" y="2.5" width="19" height="15"/><polyline fill="none" stroke="var(--text-base-color" stroke-width="1.01" points="4,13 8,9 13,14"/><polyline fill="none" stroke="var(--text-base-color)" stroke-width="1.01" points="11,12 12.5,10.5 16,14"/></svg>
 </span>
 </aside>
 <main id=main>
