@@ -1,0 +1,212 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="§Prioritisation
+Is essentially two problems:
+
+What to do at all? [[§Selection]].
+What to do first? [[§Scheduling]], [[§Scheduling for a single agent]]
+
+Maybe this isn’t quite right, though? [[Impact Density Scheduling]] uses the importance of a task to sort them for execution, somewhat similarly to …">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="default">
+<link rel=manifest href=https://martbern.github.io/test_garage_door/manifest.json><meta property="og:title" content>
+<meta property="og:description" content="§Prioritisation Is essentially two problems:
+ What to do at all? [[§Selection]]. What to do first? [[§Scheduling]], [[§Scheduling for a single agent]]  Maybe this isn’t quite right, though? [[Impact Density Scheduling]] uses the importance of a task to sort them for execution, somewhat similarly to [[§Selection]]. However, [[§Selection]] is a [[Bucket Sort]], so it might improve the overall efficiency anyway.
+  [[Prioritisation should be guided by values]]
+ [[Prioritisation should be guided by goals]]    [[Prioritisation should be minimal effort]]">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://martbern.github.io/test_garage_door/prioritisation.html"><meta property="article:section" content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content>
+<meta name=twitter:description content="§Prioritisation Is essentially two problems:
+ What to do at all? [[§Selection]]. What to do first? [[§Scheduling]], [[§Scheduling for a single agent]]  Maybe this isn’t quite right, though? [[Impact Density Scheduling]] uses the importance of a task to sort them for execution, somewhat similarly to [[§Selection]]. However, [[§Selection]] is a [[Bucket Sort]], so it might improve the overall efficiency anyway.
+  [[Prioritisation should be guided by values]]
+ [[Prioritisation should be guided by goals]]    [[Prioritisation should be minimal effort]]">
+<title>§Prioritisation - My New Hugo Site</title>
+<link rel=stylesheet href=https://martbern.github.io/test_garage_door/css/main.min.b87750d092855b50f95ecdbb7001770e3f800ae4dbc71f0e0de699df9321e75d.css>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js></script>
+<script src=https://martbern.github.io/test_garage_door/js/main.min.f64522e8eae3046c0982972c612443849ea16544a60448073f6eb7f75f8c622d.js integrity="sha256-9kUi6OrjBGwJgpcsYSRDhJ6hZUSmBEgHP26391+MYi0="></script>
+</head>
+<body>
+<style>search-menu{display:block}#search{height:100%;width:0;position:fixed;background:var(--background-search);z-index:1;top:0;left:0;border-right:1px solid var(--separator-color);overflow-x:hidden;overflow-y:auto;opacity:0;-ms-overflow-style:none;scrollbar-width:none}#search::-webkit-scrollbar{display:none}#search-header{padding:12px;position:fixed;padding-left:12px;padding-right:12px;background:var(--background-search);width:250px;opacity:1;height:50px;z-index:2;border-bottom:1px solid var(--separator-color)}#search .input-container{position:relative}#search-input{width:100%;height:24px;border:1px solid var(--separator-color);border-radius:4px;padding-left:16px;background-color:#fff;display:inline-block}#search-input:focus{border:1px solid var(--search-field-focused-color)}#search-header .input-container .search-icon{position:absolute;top:6px;left:8px;fill:#a9a9a9}#search-results img{width:122px;height:76px;border:1px solid var(--separator-color);object-fit:cover}#search-results{margin-top:50px;overflow:auto;height:100%}#search-results a{width:100%;padding-left:25px;padding-right:25px;padding-top:12px;padding-bottom:12px;display:inline-block;color:var(--text-base-color);border-bottom:1px solid var(--separator-color);border-left:6px solid var(--background-search)}#search-results a:first-child:hover,a:first-child:focus,.selected{outline:0;background-color:var(--note-table-cell-selected-color);border-left:6px solid var(--note-table-cell-ribbon-color)!important}#search-results li{text-indent:0}#search-results li:before,#search-results h1:before,#search-results h2:before,#search-results h3:before,#search-results h4:before,#search-results h5:before,#search-results h6:before{content:"";visibility:hidden;display:none}</style>
+<search-menu id=search data-turbolinks-permanent>
+<header id=search-header>
+<div class=input-container><svg aria-hidden="true" class="search-icon" width="12" height="12" viewBox="0 0 18 18"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z"/></svg>
+<input type=search autocomplete=off id=search-input onkeyup=performSearch() tabindex=0 placeholder="Search note">
+</div>
+</header>
+<ul id=search-results></ul>
+</search-menu>
+<script></script>
+<style>#toolbar{position:fixed;top:0;right:0;width:60px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;transition:1s;opacity:.5;padding:18px 0}#toolbar:hover{opacity:1}#close-nav-icon{display:none}</style>
+<aside id=toolbar>
+<span style=cursor:pointer id=open-nav-icon onclick=handleNavVisibility()><svg width="18" height="18" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle fill="none" stroke="var(--text-base-color)" stroke-width="1.1" cx="9" cy="9" r="7"/><path fill="none" stroke="var(--text-base-color)" stroke-width="1.1" d="M14 14l4 4-4-4z"/></svg>
+</span>
+<span onclick=imageMode() style=cursor:pointer;margin-top:16px><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="16.1" cy="6.1" r="1.1"/><rect fill="none" stroke="var(--text-base-color" x=".5" y="2.5" width="19" height="15"/><polyline fill="none" stroke="var(--text-base-color" stroke-width="1.01" points="4,13 8,9 13,14"/><polyline fill="none" stroke="var(--text-base-color)" stroke-width="1.01" points="11,12 12.5,10.5 16,14"/></svg>
+</span>
+</aside>
+<main id=main>
+<div id=note-wrapper class=note-wrapper>
+<h1 id=prioritisation>§Prioritisation</h1>
+<p>Is essentially two problems:</p>
+<ol>
+<li>What to do at all? <a href=selection.html>§Selection</a>.</li>
+<li>What to do first? <a href=scheduling.html>§Scheduling</a>, <a href=scheduling-for-a-single-agent.html>§Scheduling for a single agent</a></li>
+</ol>
+<p>Maybe this isn’t quite right, though? <a href=impact-density-scheduling.html>Impact Density Scheduling</a> uses the importance of a task to sort them for execution, somewhat similarly to <a href=selection.html>§Selection</a>. However, <a href=selection.html>§Selection</a> is a <a href=bucket-sort.html>Bucket Sort</a>, so it might improve the overall efficiency anyway.</p>
+<ul>
+<li>
+<p><a href=prioritisation-should-be-guided-by-values.html>Prioritisation should be guided by values</a></p>
+<ul>
+<li><a href=prioritisation-should-be-guided-by-goals.html>Prioritisation should be guided by goals</a></li>
+</ul>
+</li>
+<li>
+<p><a href=prioritisation-should-be-minimal-effort.html>Prioritisation should be minimal effort</a></p>
+<ul>
+<li><a href=choosing-requires-friction.html>Choosing requires friction</a></li>
+<li><a href=use-heuristics-for-prioritisation.html>Use heuristics for prioritisation</a></li>
+</ul>
+</li>
+</ul>
+<p>One effective way of using <a href=prioritisation.html>§Prioritisation</a> in a world with too much information is using algorithms; ideally trainable algorithms that take personal preference strongly into account, and that can account for distribution shift. Gmails “important” email algorithm seems to do this pretty well so far.</p>
+<p>Q. In your terminology, which sub-problems does <a href=prioritisation.html>§Prioritisation</a> consist of?
+A. 1. <a href=selection.html>§Selection</a>, 2. <a href=scheduling.html>§Scheduling</a></p>
+<h2 id=backlinks>Backlinks</h2>
+<ul>
+<li><a href=prioritisation.html>§Prioritisation</a>
+<ul>
+<li>One effective way of using <a href=prioritisation.html>§Prioritisation</a> in a world with too much information is using algorithms; ideally trainable algorithms that take personal preference strongly into account, and that can account for distribution shift. Gmails “important” email algorithm seems to do this pretty well so far.</li>
+<li>Q. In your terminology, which sub-problems does <a href=prioritisation.html>§Prioritisation</a> consist of?</li>
+</ul>
+</li>
+<li><a href=scheduling-for-a-single-agent.html>§Scheduling for a single agent</a>
+<ul>
+<li>This makes <a href=prioritisation.html>§Prioritisation</a> more important than sceduling.</li>
+</ul>
+</li>
+<li><a href=planning.html>§Planning</a>
+<ul>
+<li>What separates <a href=planning.html>Planning</a> and <a href=prioritisation.html>§Prioritisation</a>?</li>
+<li>Allowing you to simulate the consequences of your actions, so you can skip the ones that aren’t important (also required for <a href=prioritisation.html>§Prioritisation</a>).</li>
+</ul>
+</li>
+<li><a href=impact-density-scheduling.html>Impact Density Scheduling</a>
+<ul>
+<li>The more time we spend determining something’s impact density, the higher the overhead. This means that improving <a href=prioritisation.html>§Prioritisation</a> improves our overall lives.</li>
+</ul>
+</li>
+<li>[[Focus is fundamental (coinage)]]
+<ul>
+<li>By definition, focus is acting on your <a href=prioritisation.html>§Prioritisation</a>, making it necessary for a life well-lived (<a href=focus.html>§Focus</a>).</li>
+<li>Fewer salient options means less overhead from <a href=prioritisation.html>§Prioritisation</a>.</li>
+</ul>
+</li>
+<li><a href=attention-is-zero-sum.html>Attention is zero-sum</a>
+<ul>
+<li>Since <a href=attention-capacity-cannot-be-expanded.html>Attention capacity cannot be expanded</a>, the fact that <a href=attention-is-zero-sum.html>Attention is zero-sum</a> means that it&rsquo;s incredibly important to <a href=protect-attention.html>Protect attention</a> and to do <a href=prioritisation.html>§Prioritisation</a> well.</li>
+</ul>
+</li>
+<li><a href=action-menus-can-facilitate-choice.html>Action menus can facilitate choice</a>
+<ul>
+<li>Ties into <a href=planning.html>§Planning</a> and <a href=prioritisation.html>§Prioritisation</a>.</li>
+</ul>
+</li>
+<li>[[§Rabbit Holes (attention)]]
+<ul>
+<li>One example is “Doomscrolling”. It implies a state of <a href=hyperfocus.html>§Hyperfocus</a>, where we lose sense of self to the detriment of <a href=prioritisation.html>§Prioritisation</a>.</li>
+</ul>
+</li>
+<li><a href=efficiency-paradox.html>§Efficiency Paradox</a>
+<ul>
+<li>However, if we feel hurried and busy, the cure is rarely higher efficiency. It’s turning down opportunities and responsibilities, as well as accepting imperfection. It’s all about <a href=prioritisation.html>§Prioritisation</a>.</li>
+</ul>
+</li>
+<li><a href=do-i-want-to-review-work-and-leisure-together.html>Do I want to review work and leisure together</a>
+<ul>
+<li>I think so! Part of spending time well is <a href=prioritisation.html>§Prioritisation</a>, and that requires that I can compare my options.</li>
+</ul>
+</li>
+<li><a href=how-do-we-balance-goals-and-values.html>How do we balance goals and values</a>
+<ul>
+<li>If we <a href=use-values-to-select-goals.html>Use values to select goals</a>, we can live by both. It&rsquo;s rather a question of prioritising, of balancing values and selecting the right goals (<a href=prioritisation.html>§Prioritisation</a>).</li>
+</ul>
+</li>
+<li><a href=executing-well.html>§Executing well</a>
+<ul>
+<li><a href=prioritisation.html>§Prioritisation</a></li>
+</ul>
+</li>
+<li><a href=productivity.html>§Productivity</a>
+<ul>
+<li><a href=prioritisation.html>§Prioritisation</a></li>
+</ul>
+</li>
+<li><a href=productivity-is-prioritisation-efficiency-and-time.html>Productivity is prioritisation, efficiency and time</a>
+<ul>
+<li><a href=prioritisation.html>§Prioritisation</a> x Efficiency x Time</li>
+<li><a href=prioritisation.html>§Prioritisation</a> is about selecting the right objectives. This requires that we:</li>
+</ul>
+</li>
+<li><a href=how-many-hours-should-i-work.html>How many hours should I work?</a>
+<ul>
+<li>If you&rsquo;re dissatisfied with what you&rsquo;re getting done while under low-moderate stress, the solution isn&rsquo;t in more hours - it&rsquo;s in <a href=prioritisation.html>§Prioritisation</a> or <a href=efficiency.html>Efficiency</a>. After all, <a href=productivity-is-prioritisation-efficiency-and-time.html>Productivity is prioritisation, efficiency and time</a>.</li>
+</ul>
+</li>
+<li><a href=how-do-we-spend-more-time-on-what-is-important.html>?How do we spend more time on what is important</a>
+<ul>
+<li>Basically a question of <a href=prioritisation.html>§Prioritisation</a> and <a href=motivation.html>§Motivation</a>. Still unsure about which feedback loops I want to establish,</li>
+<li><a href=prioritisation.html>§Prioritisation</a> is supported by having an overview of my current interesting projects, <a href=a-stack-of-possibilities.html>A Stack of Possibilities</a>.</li>
+</ul>
+</li>
+<li>[[09/10/2021]]
+<ul>
+<li>In essence, this is a problem of <a href=prioritisation.html>§Prioritisation</a>. Much has been said about these, but Andy has a good thread on them.</li>
+</ul>
+</li>
+<li><a href=11-dec-21---homely.html>11-Dec-21 - Homely</a>
+<ul>
+<li><a href=prioritisation.html>§Prioritisation</a></li>
+</ul>
+</li>
+<li><a href=four-thousand-weeks-time-management-for-mortals-by-oliver-burkeman.html>Four Thousand Weeks: Time Management for Mortals by Oliver Burkeman</a>
+<ul>
+<li>The skill we want to support is <a href=prioritisation.html>§Prioritisation</a>, but I get the sense that I’m already quite OK at that?</li>
+<li><a href=prioritisation.html>§Prioritisation</a></li>
+</ul>
+</li>
+<li><a href=having-things-be-unsolved-is-the-normal-state-of-affairs.html>Having things be unsolved is the normal state of affairs</a>
+<ul>
+<li>This means that we needn&rsquo;t rush to solve all problems; rather, we need to use <a href=prioritisation.html>§Prioritisation</a> to select what is worth working on.</li>
+</ul>
+</li>
+<li><a href=how-do-i-prioritise-bandwidth-for-activity-types.html>How do I prioritise bandwidth for activity types?</a>
+<ul>
+<li>This is an orthogonal dimension from <a href=take-action-on-your-values-to-live-a-meaningful-life.html>Take action on your values to live a meaningful life</a>, which is a direction on <a href=prioritisation.html>§Prioritisation</a> for exploting.</li>
+</ul>
+</li>
+<li><a href=rather-than-learning-from-outcomes-which-actions-are-good-we-can-learn-from-our-prediction-of-outcomes.html>Rather than learning from outcomes which actions are good, we can learn from our prediction of outcomes</a>
+<ul>
+<li>That is based on those predictions being accurate, <a href=prioritisation.html>§Prioritisation</a>, <a href=planning.html>§Planning</a></li>
+</ul>
+</li>
+<li><a href=the-paradigm-shift-in-rationality-with-anna-riedl.html>The Paradigm Shift in Rationality with Anna Riedl</a>
+<ul>
+<li>Being good at <a href=prioritisation.html>§Prioritisation</a>, but in the most general sense. Wisdom is choosing what is important to you.</li>
+</ul>
+</li>
+<li><a href=the-subtle-art-of-not-giving-a-fuck.html>The Subtle Art of Not Giving a Fuck</a>
+<ul>
+<li>Might have insights into <a href=prioritisation.html>§Prioritisation</a>.</li>
+</ul>
+</li>
+<li><a href=your-prioritization-is-underspecified---lesswrong.html>Your Prioritization is Underspecified - LessWrong</a>
+<ul>
+<li>How can this inform <a href=prioritisation.html>§Prioritisation</a>?</li>
+</ul>
+</li>
+</ul>
