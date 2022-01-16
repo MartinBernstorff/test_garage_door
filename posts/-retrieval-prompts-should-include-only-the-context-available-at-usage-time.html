@@ -1,0 +1,95 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="?Retrieval prompts should include (only) the context available at usage time
+To avoid overfitting, i.e. learning the card rather than learning the knowledge.
+When we say information here, we mean it in the sense of [[§Information Theory]]. E.g. cloze-deletions typically include a ton of information, …">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="default">
+<link rel=manifest href=http://example.org/manifest.json><meta property="og:title" content>
+<meta property="og:description" content="?Retrieval prompts should include (only) the context available at usage time To avoid overfitting, i.e. learning the card rather than learning the knowledge.
+When we say information here, we mean it in the sense of [[§Information Theory]]. E.g. cloze-deletions typically include a ton of information, because you’re mapping to the combination of words, which is relatively unique. OTOH, even relatively long QA prompts can include low amounts of overfit-worthy information, if you’re not mentioning things that are idiosyncratic to the card.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://example.org/posts/-retrieval-prompts-should-include-only-the-context-available-at-usage-time.html"><meta property="article:section" content="posts">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content>
+<meta name=twitter:description content="?Retrieval prompts should include (only) the context available at usage time To avoid overfitting, i.e. learning the card rather than learning the knowledge.
+When we say information here, we mean it in the sense of [[§Information Theory]]. E.g. cloze-deletions typically include a ton of information, because you’re mapping to the combination of words, which is relatively unique. OTOH, even relatively long QA prompts can include low amounts of overfit-worthy information, if you’re not mentioning things that are idiosyncratic to the card.">
+<title>-Retrieval prompts should include (only) the context available at usage time - My New Hugo Site</title>
+<link rel=stylesheet href=http://example.org/css/main.min.b87750d092855b50f95ecdbb7001770e3f800ae4dbc71f0e0de699df9321e75d.css>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js></script>
+<script src=http://example.org/js/main.min.f64522e8eae3046c0982972c612443849ea16544a60448073f6eb7f75f8c622d.js integrity="sha256-9kUi6OrjBGwJgpcsYSRDhJ6hZUSmBEgHP26391+MYi0="></script>
+</head>
+<body>
+<style>search-menu{display:block}#search{height:100%;width:0;position:fixed;background:var(--background-search);z-index:1;top:0;left:0;border-right:1px solid var(--separator-color);overflow-x:hidden;overflow-y:auto;opacity:0;-ms-overflow-style:none;scrollbar-width:none}#search::-webkit-scrollbar{display:none}#search-header{padding:12px;position:fixed;padding-left:12px;padding-right:12px;background:var(--background-search);width:250px;opacity:1;height:50px;z-index:2;border-bottom:1px solid var(--separator-color)}#search .input-container{position:relative}#search-input{width:100%;height:24px;border:1px solid var(--separator-color);border-radius:4px;padding-left:16px;background-color:#fff;display:inline-block}#search-input:focus{border:1px solid var(--search-field-focused-color)}#search-header .input-container .search-icon{position:absolute;top:6px;left:8px;fill:#a9a9a9}#search-results img{width:122px;height:76px;border:1px solid var(--separator-color);object-fit:cover}#search-results{margin-top:50px;overflow:auto;height:100%}#search-results a{width:100%;padding-left:25px;padding-right:25px;padding-top:12px;padding-bottom:12px;display:inline-block;color:var(--text-base-color);border-bottom:1px solid var(--separator-color);border-left:6px solid var(--background-search)}#search-results a:first-child:hover,a:first-child:focus,.selected{outline:0;background-color:var(--note-table-cell-selected-color);border-left:6px solid var(--note-table-cell-ribbon-color)!important}#search-results li{text-indent:0}#search-results li:before,#search-results h1:before,#search-results h2:before,#search-results h3:before,#search-results h4:before,#search-results h5:before,#search-results h6:before{content:"";visibility:hidden;display:none}</style>
+<search-menu id=search data-turbolinks-permanent>
+<header id=search-header>
+<div class=input-container><svg aria-hidden="true" class="search-icon" width="12" height="12" viewBox="0 0 18 18"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z"/></svg>
+<input type=search autocomplete=off id=search-input onkeyup=performSearch() tabindex=0 placeholder="Search note">
+</div>
+</header>
+<ul id=search-results></ul>
+</search-menu>
+<script></script>
+<style>#toolbar{position:fixed;top:0;right:0;width:60px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;transition:1s;opacity:.5;padding:18px 0}#toolbar:hover{opacity:1}#close-nav-icon{display:none}</style>
+<aside id=toolbar>
+<span style=cursor:pointer id=open-nav-icon onclick=handleNavVisibility()><svg width="18" height="18" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle fill="none" stroke="var(--text-base-color)" stroke-width="1.1" cx="9" cy="9" r="7"/><path fill="none" stroke="var(--text-base-color)" stroke-width="1.1" d="M14 14l4 4-4-4z"/></svg>
+</span>
+<span onclick=imageMode() style=cursor:pointer;margin-top:16px><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="16.1" cy="6.1" r="1.1"/><rect fill="none" stroke="var(--text-base-color" x=".5" y="2.5" width="19" height="15"/><polyline fill="none" stroke="var(--text-base-color" stroke-width="1.01" points="4,13 8,9 13,14"/><polyline fill="none" stroke="var(--text-base-color)" stroke-width="1.01" points="11,12 12.5,10.5 16,14"/></svg>
+</span>
+</aside>
+<main id=main>
+<div id=note-wrapper class=note-wrapper>
+<h1 id=retrieval-prompts-should-include-only-the-context-available-at-usage-time>?Retrieval prompts should include (only) the context available at usage time</h1>
+<p>To avoid overfitting, i.e. learning the card rather than learning the knowledge.</p>
+<p>When we say information here, we mean it in the sense of <a href=information-theory.html>§Information Theory</a>. E.g. cloze-deletions typically include a ton of information, because you’re mapping to the combination of words, which is relatively unique. OTOH, even relatively long QA prompts can include low amounts of overfit-worthy information, if you’re not mentioning things that are idiosyncratic to the card.</p>
+<p>More context makes it easier to match to a use-case, more likely for the memory to show up organically as you need it.
+But it also makes you prone to overfit – rather than creating a broad concept which applies within a certain set of parameters, you train for the test.</p>
+<p>Less context makes the prompts harder, and makes you prone to misapplication (because its limits were underspecified), not applying the concept (because it isn’t prompted by the situation it might be useful in), and forgetting the concept (because you never apply it).</p>
+<p>This seems related to <a href=work-at-the-right-level-of-abstraction.html>Work at the right level of abstraction</a>.</p>
+<h2 id=backlinks>Backlinks</h2>
+<ul>
+<li><a href=use-cloze-deletions-to-learn-sets-and-lists.html>?Use cloze-deletions to learn sets and lists</a>
+<ul>
+<li>The big question is whether I’ll “overfit”; I must keep the prompts as short as possible (to give only context that’ll be available at the time I’ll need the information), but as long as necessary ([[?Retrieval prompts should include (only) the context available at usage time]]).</li>
+</ul>
+</li>
+<li><a href=retrieval-prompts-should-discourage-shallow-pattern-matching.html>Retrieval prompts should discourage shallow pattern matching</a>
+<ul>
+<li>[[?Retrieval prompts should include (only) the context available at usage time]].</li>
+</ul>
+</li>
+<li><a href=cloze-deletion-prompts-seem-to-produce-less-understanding-than-question-answer-pairs-in-spaced-repetition-memory-systems.html>Cloze deletion prompts seem to produce less understanding than question-answer pairs in spaced repetition memory systems</a>
+<ul>
+<li>Cloze deletions typically include so much context that they allow for pattern matching/overfitting. This is less true if all it includes is a diagnosis and the items that are important to remember. It might also be possible to circumvent, at least somewhat, [[?Retrieval prompts should include (only) the context available at usage time]].</li>
+</ul>
+</li>
+<li><a href=retrieval-prompts-should-prepare-you-for-a-future-situation.html>Retrieval prompts should prepare you for a future situation</a>
+<ul>
+<li>In this sense, this prompt is true. Cards are most powerful when they’re shaped so that they empower your future self This means that [[?Retrieval prompts should include (only) the context available at usage time]].</li>
+</ul>
+</li>
+<li><a href=qualities-of-good-retrieval-practice-prompts.html>§Qualities of good retrieval practice prompts</a>
+<ul>
+<li>One argument for allowing [[?Retrieval prompts should include (only) the context available at usage time]] to be downplayed is that we allow the brain to make these connections. It&rsquo;s all about transfer learning, though, <a href=practice-how-you-play.html>Practice how you play</a></li>
+</ul>
+</li>
+<li>[[§Retrieval Practice (Qualities of a Good Practice)]]
+<ul>
+<li>[[?Retrieval prompts should include (only) the context available at usage time]]</li>
+</ul>
+</li>
+<li>[[06/11/2021 - Home]]
+<ul>
+<li>[[?Retrieval prompts should include (only) the context available at usage time]]</li>
+</ul>
+</li>
+<li><a href=examples-can-act-as-unit-tests.html>Examples can act as unit tests</a>
+<ul>
+<li>[[?Retrieval prompts should include (only) the context available at usage time]]</li>
+</ul>
+</li>
+</ul>

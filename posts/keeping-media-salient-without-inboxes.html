@@ -1,0 +1,82 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Keeping media salient without inboxes
+[[Implementation of Keeping media salient without inboxes]]
+The general idea is to avoid [[Inboxes feel like obligations]], but also spending too much time collecting media ([[Collecting material feels more useful than it typically is]]) and/or browsing media …">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="default">
+<link rel=manifest href=http://example.org/manifest.json><meta property="og:title" content>
+<meta property="og:description" content="Keeping media salient without inboxes [[Implementation of Keeping media salient without inboxes]]
+The general idea is to avoid [[Inboxes feel like obligations]], but also spending too much time collecting media ([[Collecting material feels more useful than it typically is]]) and/or browsing media that has high novelty but makes little difference in your life ([[Artificial novelty distracts from true exploration]]).
+Classic inbox-like implementations (Pocket/Instapaper) are 100% based on recency, limiting [[Randomness promotes serendipity]].">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://example.org/posts/keeping-media-salient-without-inboxes.html"><meta property="article:section" content="posts">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content>
+<meta name=twitter:description content="Keeping media salient without inboxes [[Implementation of Keeping media salient without inboxes]]
+The general idea is to avoid [[Inboxes feel like obligations]], but also spending too much time collecting media ([[Collecting material feels more useful than it typically is]]) and/or browsing media that has high novelty but makes little difference in your life ([[Artificial novelty distracts from true exploration]]).
+Classic inbox-like implementations (Pocket/Instapaper) are 100% based on recency, limiting [[Randomness promotes serendipity]].">
+<title>Keeping media salient without inboxes - My New Hugo Site</title>
+<link rel=stylesheet href=http://example.org/css/main.min.b87750d092855b50f95ecdbb7001770e3f800ae4dbc71f0e0de699df9321e75d.css>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js></script>
+<script src=http://example.org/js/main.min.f64522e8eae3046c0982972c612443849ea16544a60448073f6eb7f75f8c622d.js integrity="sha256-9kUi6OrjBGwJgpcsYSRDhJ6hZUSmBEgHP26391+MYi0="></script>
+</head>
+<body>
+<style>search-menu{display:block}#search{height:100%;width:0;position:fixed;background:var(--background-search);z-index:1;top:0;left:0;border-right:1px solid var(--separator-color);overflow-x:hidden;overflow-y:auto;opacity:0;-ms-overflow-style:none;scrollbar-width:none}#search::-webkit-scrollbar{display:none}#search-header{padding:12px;position:fixed;padding-left:12px;padding-right:12px;background:var(--background-search);width:250px;opacity:1;height:50px;z-index:2;border-bottom:1px solid var(--separator-color)}#search .input-container{position:relative}#search-input{width:100%;height:24px;border:1px solid var(--separator-color);border-radius:4px;padding-left:16px;background-color:#fff;display:inline-block}#search-input:focus{border:1px solid var(--search-field-focused-color)}#search-header .input-container .search-icon{position:absolute;top:6px;left:8px;fill:#a9a9a9}#search-results img{width:122px;height:76px;border:1px solid var(--separator-color);object-fit:cover}#search-results{margin-top:50px;overflow:auto;height:100%}#search-results a{width:100%;padding-left:25px;padding-right:25px;padding-top:12px;padding-bottom:12px;display:inline-block;color:var(--text-base-color);border-bottom:1px solid var(--separator-color);border-left:6px solid var(--background-search)}#search-results a:first-child:hover,a:first-child:focus,.selected{outline:0;background-color:var(--note-table-cell-selected-color);border-left:6px solid var(--note-table-cell-ribbon-color)!important}#search-results li{text-indent:0}#search-results li:before,#search-results h1:before,#search-results h2:before,#search-results h3:before,#search-results h4:before,#search-results h5:before,#search-results h6:before{content:"";visibility:hidden;display:none}</style>
+<search-menu id=search data-turbolinks-permanent>
+<header id=search-header>
+<div class=input-container><svg aria-hidden="true" class="search-icon" width="12" height="12" viewBox="0 0 18 18"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 10-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 112 7a5 5 0 0110 0z"/></svg>
+<input type=search autocomplete=off id=search-input onkeyup=performSearch() tabindex=0 placeholder="Search note">
+</div>
+</header>
+<ul id=search-results></ul>
+</search-menu>
+<script></script>
+<style>#toolbar{position:fixed;top:0;right:0;width:60px;height:100%;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;transition:1s;opacity:.5;padding:18px 0}#toolbar:hover{opacity:1}#close-nav-icon{display:none}</style>
+<aside id=toolbar>
+<span style=cursor:pointer id=open-nav-icon onclick=handleNavVisibility()><svg width="18" height="18" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle fill="none" stroke="var(--text-base-color)" stroke-width="1.1" cx="9" cy="9" r="7"/><path fill="none" stroke="var(--text-base-color)" stroke-width="1.1" d="M14 14l4 4-4-4z"/></svg>
+</span>
+<span onclick=imageMode() style=cursor:pointer;margin-top:16px><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="16.1" cy="6.1" r="1.1"/><rect fill="none" stroke="var(--text-base-color" x=".5" y="2.5" width="19" height="15"/><polyline fill="none" stroke="var(--text-base-color" stroke-width="1.01" points="4,13 8,9 13,14"/><polyline fill="none" stroke="var(--text-base-color)" stroke-width="1.01" points="11,12 12.5,10.5 16,14"/></svg>
+</span>
+</aside>
+<main id=main>
+<div id=note-wrapper class=note-wrapper>
+<h1 id=keeping-media-salient-without-inboxes>Keeping media salient without inboxes</h1>
+<p><a href=implementation-of-keeping-media-salient-without-inboxes.html>Implementation of Keeping media salient without inboxes</a></p>
+<p>The general idea is to avoid <a href=inboxes-feel-like-obligations.html>Inboxes feel like obligations</a>, but also spending too much time collecting media (<a href=collecting-material-feels-more-useful-than-it-typically-is.html>Collecting material feels more useful than it typically is</a>) and/or browsing media that has high novelty but makes little difference in your life (<a href=artificial-novelty-distracts-from-true-exploration.html>Artificial novelty distracts from true exploration</a>).</p>
+<p>Classic inbox-like implementations (Pocket/Instapaper) are 100% based on recency, limiting <a href=randomness-promotes-serendipity.html>Randomness promotes serendipity</a>. Furthermore, this ordering based on recency or other factors suggests that there is an order to be followed, making it feel somewhat like an inbox.</p>
+<p>Since we&rsquo;re continually adding more articles, past articles will take up a gradually larger portion of the suggested articles. This isn&rsquo;t necessarily a problem; it biases towards &ldquo;exploitation&rdquo; of known information rather than exploration of new information, which makes sense since my reading interval is decreasing (for more, see <a href=explore-or-exploit-problem.html>Explore or Exploit problem</a>). However, we may counteract some of the effect by showing recently added articles more often (<a href=bias-towards-recency.html>Bias towards recency</a>).</p>
+<p>Ideally, I&rsquo;d be able to browse the periodical suggestions as well, when I remember &ldquo;something about XY&rdquo;. This can be achieved by forwarding them to a separate email that is added to a separate email client.</p>
+<p>I want to <a href=decrease-options-to-make-decision-making-easier.html>Decrease options to make decision-making easier</a> by presenting the options in sets.</p>
+<p>If you&rsquo;re pushing towards exploit rather than explore, you want to decrease delay between browsing and reading as much as possible (<a href=delay-decreases-motivation.html>Delay decreases motivation</a>). This makes you more likely to read and think, and avoids <a href=collecting-material-feels-more-useful-than-it-typically-is.html>Collecting material feels more useful than it typically is</a>.</p>
+<p>Whether I want a mobile option depends on what I think the consequences of that are going to be – currently, I fear that it may detract from day-to-day interaction by making a more interesting option available at all times (<a href=burn-the-ships-to-strengthen-your-resolve.html>Burn the ships to strengthen your resolve</a>).</p>
+<p>It is essential with easy ingest for a book/media management system. When getting distracted on the internet, it allows you to easily let go of the path and return to it in the future, hence <a href=make-it-easy-to-ingest.html>Make it easy to ingest</a>.</p>
+<p>Open questions:
+<a href=avoid-context-switching.html>Avoid context switching</a></p>
+<h2 id=backlinks>Backlinks</h2>
+<ul>
+<li><a href=how-do-i-keep-ideas-books-and-other-non-obligations-salient.html>How do I keep ideas, books and other non-obligations salient</a>
+<ul>
+<li><a href=keeping-media-salient-without-inboxes.html>Keeping media salient without inboxes</a></li>
+</ul>
+</li>
+<li><a href=keep-activity-possibilities-salient-without-an-inbox.html>Keep activity possibilities salient without an inbox</a>
+<ul>
+<li>I&rsquo;d especially like for my leisure time to include more &ldquo;high quality&rdquo; activities. One way of implementing it may be <a href=keeping-media-salient-without-inboxes.html>Keeping media salient without inboxes</a>.</li>
+</ul>
+</li>
+<li><a href=move-to-email-and-markdown-files-in-1writer.html>Move to email and markdown files in 1Writer</a>
+<ul>
+<li>Would allow for bear x-callback-urls, which would make it tremendously easier to use. May be an instance of <a href=polish-is-necessary-to-properly-gauge-an-idea.html>Polish is necessary to properly gauge an idea</a>. Helps improve <a href=keeping-media-salient-without-inboxes.html>Keeping media salient without inboxes</a>.</li>
+</ul>
+</li>
+<li><a href=separate-reading-and-research.html>Separate reading and research</a>
+<ul>
+<li>This is an improvement to <a href=keeping-media-salient-without-inboxes.html>Keeping media salient without inboxes</a> that I would like do. [[$My note system]]</li>
+</ul>
+</li>
+</ul>
