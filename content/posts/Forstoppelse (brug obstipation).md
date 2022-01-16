@@ -1,0 +1,3 @@
+# Forstoppelse (brug obstipation)
+
+<!-- {BearID:04A68CDE-47E3-4A05-A55A-FE76B06B1FCE-51703-000068BBF14293CF} -->

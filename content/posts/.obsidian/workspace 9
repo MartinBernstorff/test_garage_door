@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "03c2b7d80d9c87ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ead82e2448d9cf5",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "§Executing well.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0313ff6d75d2dba9",
+    "type": "split",
+    "children": [
+      {
+        "id": "a0df518d0b67f748",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "37168aefefe60f8b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "09bf940e72127994",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "productivi",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bc4d59540195f99a",
+    "type": "split",
+    "children": [
+      {
+        "id": "a5360c15884a5d1c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "876a955ed33e5520",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "§Executing well.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "5ead82e2448d9cf5",
+  "lastOpenFiles": [
+    "§Executing well.md"
+  ]
+}

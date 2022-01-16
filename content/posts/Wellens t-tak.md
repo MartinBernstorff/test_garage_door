@@ -1,0 +1,8 @@
+# Wellens t-tak
+
+## Backlinks
+* [[STEMI]]
+	* [[Wellens t-tak]]
+![](BearImages/8ED0785F-17F3-4777-84DB-14FE3D8DF7CF-71192-00010CA51689FBD1/BxRnGC8_8LqxgVkS_M82mzy6iJVyv6tSz.jpg)
+
+<!-- {BearID:FEB5F85C-D61F-4626-B278-031F911DD411-71192-00010CCCB591D590} -->

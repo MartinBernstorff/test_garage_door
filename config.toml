@@ -1,0 +1,29 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = "zettels"
+
+uglyURLS =  true
+relativeURLs = true
+
+publishDir = "public"
+pygmentsUseClasses = true
+
+assetDir = "themes/zettels/assets"
+
+DefaultContentLanguage = "en"
+
+[outputs]
+  home = ["HTML", "JSON"]
+
+[params]
+    theme = "duotone-light" 
+    bear = true
+
+# Enable tags.
+[taxonomies]
+    tag = "tags"
+
+# Allows rendering the html inside markdown
+[markup.goldmark.renderer]
+unsafe= true

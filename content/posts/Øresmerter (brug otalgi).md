@@ -1,0 +1,3 @@
+# Øresmerter (brug otalgi)
+
+<!-- {BearID:046ECF7E-AD20-490C-8234-A471E60148C4-6575-0000040050D418CD} -->

@@ -1,0 +1,3 @@
+# Komplet tværsnitslæsion
+
+<!-- {BearID:5440C83B-BA43-4665-A713-A6898D012F5D-16437-00004B581BD5BE88} -->

@@ -1,0 +1,3 @@
+# What are my 3 core values?
+
+<!-- {BearID:EB5C1F8B-3432-4FA5-82A1-7A99914FE8FB-3378-000003841A21A27B} -->

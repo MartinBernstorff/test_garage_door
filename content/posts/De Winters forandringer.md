@@ -1,0 +1,8 @@
+# De Winters forandringer
+
+## Backlinks
+* [[STEMI]]
+	* [[De Winters forandringer]]
+![](BearImages/E8F7A4C0-B168-4FD3-83FD-77A410B76F71-71192-00010CAD0FB5ED24/5jVHT8CmaRrbLbda_Wxi_6IK2yoOk9OS8.jpg)
+
+<!-- {BearID:1807AF86-EBC0-4B75-9B22-F9EB5E3B5673-71192-00010CCCF3E49424} -->

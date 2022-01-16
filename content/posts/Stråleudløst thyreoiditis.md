@@ -1,0 +1,3 @@
+# Stråleudløst thyreoiditis
+
+<!-- {BearID:022EDADC-4649-4DCA-9484-65BB63103D4A-27973-00004213080FAFB3} -->

@@ -1,0 +1,3 @@
+# Bevægeindskrænkning i hånd
+
+<!-- {BearID:07CA7FC0-3AAC-4054-8494-1F74DEE46358-819-0000009137C2D1E5} -->

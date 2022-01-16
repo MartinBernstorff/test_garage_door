@@ -1,0 +1,97 @@
+{
+  "main": {
+    "id": "7601714be01cbce7",
+    "type": "split",
+    "children": [
+      {
+        "id": "56be9ef3adc497c3",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "The Paradigm Shift in Rationality with Anna Riedl.md",
+            "mode": "source",
+            "backlinks": true,
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2cad4e41447f1565",
+    "type": "split",
+    "children": [
+      {
+        "id": "a20afaa42fe5b2c2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1497458351c30e05",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "e0bfda24bf51dbfe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bb3484528f9e4f71",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "e60975dcc5714972",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "Collaborators/Lasse",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "47641b358caf0168",
+    "type": "split",
+    "children": [],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "56be9ef3adc497c3",
+  "lastOpenFiles": [
+    "The Paradigm Shift in Rationality with Anna Riedl.md",
+    "§Wisdom.md",
+    "Gratitude prompts in anki.md",
+    "Vestervang 34, 1 mf.md",
+    "Hypothesis/Background Ops 3 Entrainment.md",
+    "Hypothesis/How can we develop transformative tools for thought.md",
+    "Hypothesis/Chapter 1 Hello data  Introduction to Modern Statistics.md",
+    "Hypothesis/Turns Out Interruptions Are Bad, Who Knew.md",
+    "New test.md",
+    "How can this not work.md"
+  ]
+}

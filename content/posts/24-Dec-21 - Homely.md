@@ -1,0 +1,5 @@
+# 24-Dec-21 - Homely
+
+<!-- #daily/home -->
+
+<!-- {BearID:DE20BA7B-FAAA-4B12-B63E-CD9D6355A58B-17399-00000198A0A7606A} -->

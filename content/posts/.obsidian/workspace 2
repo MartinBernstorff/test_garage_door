@@ -1,0 +1,158 @@
+{
+  "main": {
+    "id": "a6a16b7d2d559c70",
+    "type": "split",
+    "children": [
+      {
+        "id": "a5893cd6f18f0514",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "§Productivity.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "cae3074e496f2405",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "§Working in Public.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "fd9e1c48c9ae0a39",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "We tend to overrate our 'how-it-works' understanding.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b7268ea1e0406a4f",
+    "type": "split",
+    "children": [
+      {
+        "id": "b74fc6a86e88c500",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "806fdc0043a7c289",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "e6cc5e562df8d437",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "context",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": true,
+                "sortOrder": "byModifiedTime"
+              }
+            }
+          },
+          {
+            "id": "3fdca50db5acffac",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "095d3ebadf9e3874",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "09fad06dfc509a0b",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "f2a204d1f037de41",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5dd8749511a8fd05",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "We tend to overrate our 'how-it-works' understanding.md",
+                "collapseAll": false,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f2ca4cfca7122ed1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 405.49999809265137
+  },
+  "right": {
+    "id": "0ba237441566e8e2",
+    "type": "split",
+    "children": [],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "fd9e1c48c9ae0a39",
+  "lastOpenFiles": [
+    "We tend to overrate our 'how-it-works' understanding.md",
+    "There are only two ways to predict the future.md",
+    "Untitled 1.md",
+    "§Working in Public.md",
+    "Value effort efficiency.md",
+    "Building requires repeated effort.md",
+    "Design systems that value effortlessness.md",
+    "§Productivity.md",
+    "Burn the ships to strengthen your resolve.md",
+    "§Exercise.md"
+  ]
+}

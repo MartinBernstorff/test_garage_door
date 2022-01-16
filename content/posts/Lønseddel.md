@@ -1,0 +1,10 @@
+# Lønseddel
+
+[file:898B62D1-094B-41D1-ADA2-E80F7235D11E-96740-000002EB732EB45E/Lønseddel Månedsløn oktober 2021.PDF]
+[file:F978BA9A-2254-4AC3-8C33-D5A47681AFC3-96740-000002EB8E5DC6EB/Lønseddel Månedsløn september 2021.PDF]
+
+## Backlinks
+* [[Banker til boligkøb 2021]]
+	* [[Lønseddel]]
+
+<!-- {BearID:3FBAE4E3-7916-4633-9420-5B9744DBB877-96740-000002EB6F2E5FB9} -->

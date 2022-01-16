@@ -1,0 +1,3 @@
+# Starkvind for bedroom?
+
+<!-- {BearID:CE7A889E-8660-4CB9-9C43-CAE1666EC3E5-96133-000014543977D916} -->

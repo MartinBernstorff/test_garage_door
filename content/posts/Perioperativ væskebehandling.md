@@ -1,0 +1,4 @@
+# Perioperativ væskebehandling
+[file:598BB354-9139-4D66-890B-0B9553A16E56-71192-000113681F01BA52/Perioperativ væskebehandling.pdf]
+
+<!-- {BearID:FB472A32-287B-4953-AFAC-8D8A660DDD19-71192-00011365AAA7E43E} -->

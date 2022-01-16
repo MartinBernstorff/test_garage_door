@@ -1,0 +1,3 @@
+# Ambulant ￼ Indlæggelse
+
+<!-- {BearID:1AB6EE7C-0646-4B30-9426-0D93E3A0DFC3-4241-000001E5356D8ABD} -->

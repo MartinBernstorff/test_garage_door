@@ -1,0 +1,8 @@
+# Pension
+[file:78120592-25BB-42F6-8D18-22A9818C623C-96740-000002F5E748EC79/Pensionsinfo.pdf]
+
+## Backlinks
+* [[Banker til boligkøb 2021]]
+	* [[Pension]]
+
+<!-- {BearID:A0968DA9-BD6C-4DD8-8E35-A75B0BE92702-96740-000002ED95F9E953} -->
